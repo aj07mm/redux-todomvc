@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 export default class TodoTextInput extends Component {
   static propTypes = {
-    onSave: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired, //passed by component params
     text: PropTypes.string,
     placeholder: PropTypes.string,
     editing: PropTypes.bool,
@@ -25,6 +25,7 @@ export default class TodoTextInput extends Component {
   }
 
   handleChange = e => {
+	console.log('handeChange', e.target.value)
     this.setState({ text: e.target.value })
   }
 
