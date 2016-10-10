@@ -6,21 +6,6 @@ import MainSection from '../components/MainSection'
 import * as TodoActions from '../actions'
 import * as types from '../constants/ActionTypes'
 
-const App = ({todos, actions}) => (
-  <div>
-    <Header addTodo={actions.addTodo} />
-    <MainSection todos={todos} actions={actions} />
-  </div>
-)
-
-App.propTypes = {
-  todos: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
-}
-
-const mapStateToProps = state => ({
-  todos: state.todos
-})
 
 const addTodo = text => ({ type: types.ADD_TODO, text })
 const deleteTodo = id => ({ type: types.DELETE_TODO, id })
@@ -28,6 +13,23 @@ const editTodo = (id, text) => ({ type: types.EDIT_TODO, id, text })
 const completeTodo = id => ({ type: types.COMPLETE_TODO, id })
 const completeAll = () => ({ type: types.COMPLETE_ALL })
 const clearCompleted = () => ({ type: types.CLEAR_COMPLETED })
+
+const App = ({todos, actions}) => ( //what are these params?? Dependency injection only?
+  <div>
+    <Header addTodo={actions.addTodo} />
+    <MainSection todos={todos} actions={actions} />
+  </div>
+)
+
+App.propTypes = {
+  todos: PropTypes.array.isRequired, //state to props
+  actions: PropTypes.object.isRequired //dispatch to props
+}
+
+const mapStateToProps = state => ({
+  todos: state.todos
+})
+
 
 const mapDispatchToProps = dispatch => ({
     // actions: bindActionCreators(TodoActions, dispatch)
@@ -44,4 +46,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(App)//passing App
