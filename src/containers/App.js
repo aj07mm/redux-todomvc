@@ -14,7 +14,7 @@ const completeTodo = id => ({ type: types.COMPLETE_TODO, id })
 const completeAll = () => ({ type: types.COMPLETE_ALL })
 const clearCompleted = () => ({ type: types.CLEAR_COMPLETED })
 
-const App = ({todos, actions}) => ( //what are these params?? Dependency injection only?
+const App = ({todos, actions}) => ( //what are these params?? Dependency injection only? By the store??
   <div>
     <Header addTodo={actions.addTodo} />
     <MainSection todos={todos} actions={actions} />
